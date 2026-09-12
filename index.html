@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PyGuide — Built for your first 100 lines</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>PyGuide</h1>
+        <div class="tag">Built for your first 100 lines — Turn Python tracebacks into clear, human guidance</div>
+      </div>
+      <nav>
+        <a class="btn" href="#workbench">Open the workbench</a>
+        <a class="btn secondary" href="#how-it-works">See how it works</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="lead">
+          Write code. Run it. Understand what broke — all without leaving your flow.
+          PyGuide turns cryptic tracebacks into clear, human guidance so errors become aha moments.
+        </p>
+
+        <div class="panel" id="how-it-works">
+          <h3>How PyGuide helps</h3>
+          <ol>
+            <li>Start with code or plain English — PyGuide generates runnable code.</li>
+            <li>Run in-place and see the traceback next to your code.</li>
+            <li>Get a plain-language explanation and a precise fix suggestion.</li>
+          </ol>
+        </div>
+
+        <h4 style="margin-top:18px">The learning loop</h4>
+        <ol>
+          <li>Write or describe — plain English is perfect.</li>
+          <li>Run & understand — meet the traceback halfway.</li>
+          <li>Ask one more thing — follow curiosity with a mentor that reads your code.</li>
+        </ol>
+      </div>
+
+      <aside>
+        <div style="font-weight:600;margin-bottom:10px">Try the debugger — Playground</div>
+
+        <pre><code id="sample-code"># playground.py
+numbers = [3, 7, 2, 9, 4]
+
+for number in numbers
+    if number > 5:
+        print(f"{number} is a big number")
+</code></pre>
+
+        <div class="panel">
+          <strong>PyGuide output — SYNTAX ERROR · LINE 3</strong>
+          <p style="margin:8px 0 0">Python expected a colon. Add a colon at the end of the for-line:</p>
+          <pre><code>for number in numbers:</code></pre>
+          <p style="margin:8px 0 0;color:var(--muted)">Think of the colon as “a block of instructions starts next.”</p>
+        </div>
+      </aside>
+    </section>
+
+    <section style="margin-top:22px" id="workbench">
+      <h3>Start with an idea</h3>
+      <p class="tag">Describe the logic. We'll shape the syntax.</p>
+
+      <div class="workspace">
+        <div class="editor-column">
+          <div class="editor-header">
+            <select id="preset">
+              <option value="# playground.py\nnumbers = [3, 7, 2, 9, 4]\n\nfor number in numbers\n    if number > 5:\n        print(f\"{number} is a big number\")">Missing colon</option>
+              <option value="# working loop\nnumbers = [3, 7, 2, 9, 4]\nfor number in numbers:\n    if number > 5:\n        print(f\"{number} is a big number\")">Working loop</option>
+              <option value="# NameError example\nprint(x)">NameError example</option>
+            </select>
+            <button id="loadPreset" class="btn secondary">Load</button>
+          </div>
+
+          <textarea id="editor" spellcheck="false"># playground.py
+numbers = [3, 7, 2, 9, 4]
+
+for number in numbers
+    if number > 5:
+        print(f"{number} is a big number")
+</textarea>
+
+          <div style="margin-top:8px">
+            <button id="runBtn" class="btn">Run</button>
+            <button id="clearBtn" class="btn secondary">Clear Output</button>
+            <span id="status" class="tag" style="margin-left:12px">Pyodide: loading…</span>
+          </div>
+        </div>
+
+        <div class="output-column">
+          <div class="panel">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Output</strong>
+              <small id="runtime" class="tag">—</small>
+            </div>
+            <pre id="output" class="output">(no output yet)</pre>
+          </div>
+
+          <div class="panel" style="margin-top:12px">
+            <strong>Explanation</strong>
+            <div id="explain" class="explain">Run code to see explanations and suggestions.</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>
+      Code today. Understand tomorrow. — Team ScriptForge · Quest-A-Thon 2026
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+  <script src="assets/run.js"></script>
+</body>
+</html>
